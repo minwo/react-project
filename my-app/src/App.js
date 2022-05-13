@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
+import './App.scss';
+import Home from './components/Home';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <span className="check-box">
+                <label id="check01" className='' htmlFor="check01">
+                    <input type="checkbox" id="check01" className='check01' />
+                </label>
+            </span>
+            <Routes>
+                <Route path="/" element={<Home />} />
+            </Routes>
+        </div>
+    )
 }
 
 export default App;
