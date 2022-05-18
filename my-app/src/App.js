@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
-import './App.scss';
-import Home from './components/Home';
+// import { ClassNames } from '@emotion/react';
+// import { Routers } from 'react-router-dom';
+// import FormControl from '@mui/material/FormControl';
+// import InputLabel from '@mui/material/InputLabel';
+// import MenuItem from '@mui/material/MenuItem';
+// import Button from '@mui/material/Button';
+// import Select from '@mui/material/Select';
+// import Checkbox from '@mui/material/Checkbox';
+import './assets/css/App.scss';
+import Header from './components/Header';
+import Routers from './components/Routers';
 
 function App() {
+   
     return (
-        <div className="App">
-            <span className="check-box">
-                <label id="check01" className='' htmlFor="check01">
-                    <input type="checkbox" id="check01" className='check01' />
-                </label>
-            </span>
-            <Routes>
-                <Route path="/" element={<Home />} />
-            </Routes>
+        <div className='App'>
+            <Header />
+            <Routers/>
         </div>
-    )
+    );
 }
 
 export default App;

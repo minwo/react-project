@@ -1,0 +1,147 @@
+@charset "utf-8";
+
+/* default */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code, del,
+dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary, progress,
+time, mark, audio, video,
+button, input, optgroup, select, textarea{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	box-sizing: border-box;
+}
+a{color:inherit; text-decoration: none;}
+button{background-color: transparent; cursor: pointer;}
+em,address{font-style:normal}
+img,button{
+	-ms-user-select: none;
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+	line-height: 1;
+}
+label{cursor: pointer;}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section{display: block;}
+body{line-height: 1.4;}
+ol, ul{list-style: none;}
+blockquote, q{quotes: none;}
+blockquote:before, blockquote:after,
+q:before, q:after{content: ''; content: none;}
+table{
+	width:100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	table-layout:fixed;
+}
+caption {
+	display:none;
+}
+
+/* Remove the border on images inside links in IE 10. */
+img{border-style: none;}
+
+/* Show the overflow in Edge. */
+button, input{overflow: visible;}
+
+/* Correct the inability to style clickable types in iOS and Safari. */
+button, [type="button"], [type="reset"], [type="submit"]{-webkit-appearance: button;}
+
+/* Remove the inner border and padding in Firefox */
+button::-moz-focus-inner, [type="button"]::-moz-focus-inner, [type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner{
+	border-style: none;
+	padding: 0;
+}
+/* Remove the inner border and padding in iOS and Safari */
+
+/* Remove the default vertical scrollbar in IE 10+ */
+textarea{overflow: auto;}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/*
+* 1. Add the correct box sizing in IE 10.
+* 2. Remove the padding in IE 10.
+*/
+
+[type="checkbox"], [type="radio"] {
+	box-sizing: border-box; /* 1 */
+	padding: 0; /* 2 */
+}
+
+.clearfix:after {
+	content:'';
+	display:block;
+	clear:both;
+	visibility:hidden;
+}
+.invisible {
+	overflow:hidden;
+	visibility:hidden;
+	position:absolute;
+	width:0;
+	height:0;
+	font-size:0;
+	line-height:0;
+}
+
+/* input */
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="email"] {
+	border:1px solid #999;
+	border-radius:0;
+	background-color:transparent;
+	color:#000;
+	&::-ms-clear {
+		display:none;
+	}
+	
+}
+
+
+//gnb test
+.gnb-module{}
+.it-module{display:none}
+.open-menu,
+.close-menu{display:block;position:absolute;top:15px;right:15px;width:42px;height:42px;cursor: pointer;z-index:5}
+.open-menu{z-index:10}
+.open-menu .bar{display:block;position:relative;width:100%;height:4px;margin-bottom:6px;transform:rotate(-45deg);background:#222}
+.open-menu .bar.top{width:50%}
+.open-menu .bar.bottom{width:50%;margin-left:50%}
+
+.close-menu{top:42px}
+.close-menu .bar{display:block;position:relative;width:100%;height:4px;background-color:#fff}
+.close-menu .left{transform:translateX(100px) translateY(-100px) rotate(-45deg)}
+.close-menu .right{top:-4px;transform:translateX(-100px) translateY(-100px) rotate(45deg)}
+
+.inner-module{position:absolute;top:0;left:0;right:0;bottom:0;width:100%;height:100%}
+.inner-module .menu-bg{position:absolute;top:25%;left:-53%;width:250%;height:40%;background:#222}
+.inner-module .menu-bg.top{top:-17%;left:-18%;transform:rotate(-45deg) translateY(-152%)}
+.inner-module .menu-bg.middle{top:24%;left:-67%;transform:rotate(-45deg) scaleY(0)}
+.inner-module .menu-bg.bottom{top:101%;left:-30%;transform:rotate(-45deg) translateY(25%)}
+
+.gnb{display:flex;align-items:center;position:absolute;top:0;left:0;right:0;bottom:0;width:100%;height:100%}
+.gnb .depth1{width:100%;padding:0 20%}
+.gnb .depth1 a{color:#fff}
