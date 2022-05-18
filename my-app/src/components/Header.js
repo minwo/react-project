@@ -34,7 +34,7 @@ function Header() {
             <div className="head-content">
                 <div className="logo" ref={boxRef} style={{ display: 'inline-block' }}>
                     <Link to="/">
-                        <img src={Logo} style={{ width: '50px' }} alt="logo" />
+                        <img src={Logo} style={{ width: '90px' }} alt="logo" />
                     </Link>
                 </div>
 

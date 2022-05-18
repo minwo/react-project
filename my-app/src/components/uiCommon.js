@@ -60,25 +60,42 @@ export function test(){
     .to(closeTriggerRight, 0.2, { x: "-=100px", y: "-=100px", delay: 0.1, ease: "Power4.easeIn" }, "close")
     .to(openTriggerTop, 1, { x: "-=80px", y: "+=80px", delay: 0.2, ease: "Power4.easeOut" }, "close")
     .to(openTriggerMiddle, 1, { x: "-=80px", y: "+=80px", ease: "Power4.easeOut" }, "close")
-    .to(openTriggerBottom, 1, { x: "-=80px", y: "+=80px", delay: 0.1, ease: "Power4.easeOut", onComplete: function(){
-        itEl.style.display = 'none';
-    } }, "close");
+    .to(openTriggerBottom, 1, { x: "-=80px", y: "+=80px", delay: 0.1, ease: "Power4.easeOut"}, "close");
 
-    opEl.addEventListener('click', function () {
-        itEl.style.display = 'block';
-        
-        if (tlOpen.progress() < 1) {
-            tlOpen.play();
+    let opCheck = false;
+    let csCheck = false;
+    opEl.addEventListener('click', function (e) {
+        if(opCheck){
+            return false;
         } else {
-            tlOpen.restart();
+            itEl.style.display = 'block';
+            if (tlOpen.progress() < 1) {
+                tlOpen.play();
+            } else {
+                tlOpen.restart();
+            }
+            csCheck = true;
+            setTimeout(function() {
+                csCheck = false;
+            }, 1200);
         }
+
     });
 
     csEl.addEventListener('click', function(){
-        if(tlClose.progress() < 1){
-            tlClose.play();
+        if(csCheck){
+            return false;
         } else {
-            tlClose.restart();
+            if(tlClose.progress() < 1){
+                tlClose.play();
+            } else {
+                tlClose.restart();
+            }
+            opCheck = true;
+            setTimeout(function() {
+                itEl.style.display = 'none';
+                opCheck = false;
+            }, 600);
         }
     });
 
