@@ -17,6 +17,16 @@ function Header() {
             // body
         common.test();
         common.test2();
+        
+        const hdEl = document.querySelectorAll('.depth1 li');
+        [].forEach.call(hdEl, (e) => {
+            console.log(e,'11111111')
+            e.querySelector('a').addEventListener('click', (event) => {
+                console.log(event)
+                document.querySelector('.close-menu').click()
+            });
+        });    
+        
         if(status === "ready"){
             // sdk 초기화하기
         }
@@ -63,7 +73,7 @@ function Header() {
                                     <Link to="/">Login</Link>
                                 </li>
                                 <li>
-                                    <Link to="/">Create</Link>
+                                    <Link to="/Product">Create</Link>
                                 </li>
                                 <li>
                                     <Link to="/">Support</Link>

@@ -105,6 +105,19 @@ input[type="number"]::-webkit-inner-spin-button {
 	line-height:0;
 }
 
+/* button */
+.btn-toggle{position:relative;width:80px;height:40px;border-radius:40px;background-color:#bdc1c8;transition:background-color 0.25s;
+    &.active{background-color:#29b5a8;
+        .handle{left:42.75px}
+        &::after{content:'On'}
+        &::before{display:none}
+    }
+    .handle{position:absolute;top:5.25px;left:5.25px;width:30px;height:30px;border-radius:50%;background-color:#fff;;transition:left 0.25s;
+    }
+    // &::after{display:none}
+    &::before{content:'Off'}
+}
+
 /* input */
 input[type="text"],
 input[type="password"],
@@ -146,3 +159,65 @@ input[type="email"] {
 .gnb{display:flex;align-items:center;position:absolute;top:0;left:0;right:0;bottom:0;width:100%;height:100%}
 .gnb .depth1{width:100%;padding:0 20%}
 .gnb .depth1 a{color:#fff}
+
+
+
+
+
+// loader
+
+$spinner_speed: .675s;
+$spinner_radius: 80%;
+$spinner_fill_radius: 90px;
+
+$spinner_size: 50px;
+$spinner_thickness: 10px;
+$spinner_inner_circle: $spinner_size - $spinner_thickness;
+
+$spinner_color: #005041;
+$spinner_bg: #fff;
+$spinner_inner_bg: #fff;
+
+.spin-loader {
+    border-radius: 80%;
+    display: block;
+    height: $spinner_size;
+    width: $spinner_size;
+    position: relative;
+    animation: spin $spinner_speed linear 0s infinite normal;
+    background: $spinner_bg;
+  
+    &:before,
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+    }
+  
+    &:before {
+      border-radius: 0 $spinner_fill_radius $spinner_fill_radius 0;
+      height: $spinner_size;
+      width: 50%;
+      top: 0; right: 0;
+      z-index: 1;
+      background: $spinner_color;
+      background-image: linear-gradient( $spinner_bg, $spinner_color);
+    }
+  
+    &:after {
+      border-radius: $spinner_radius;
+      height: $spinner_inner_circle;
+      width: $spinner_inner_circle;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      background: $spinner_inner_bg;
+    }
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }

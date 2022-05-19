@@ -56,8 +56,8 @@ export function test(){
         menuMiddle.style.backgroundColor = "#222";
         menuBottom.style.backgroundColor = "#222";
     }}, "close", "+=0.2")
-    .to(closeTriggerLeft, 0.2, { x: "+=100px", y: "-=100px", ease: "Power4.easeIn" }, "close")
-    .to(closeTriggerRight, 0.2, { x: "-=100px", y: "-=100px", delay: 0.1, ease: "Power4.easeIn" }, "close")
+    .to(closeTriggerLeft, 0.2, { x: "+=100px", y: "-=100px", delay: 0.1, ease: "Power4.easeIn" }, "close")
+    .to(closeTriggerRight, 0.2, { x: "-=100px", y: "-=100px", delay: 0.2, ease: "Power4.easeIn" }, "close")
     .to(openTriggerTop, 1, { x: "-=80px", y: "+=80px", delay: 0.2, ease: "Power4.easeOut" }, "close")
     .to(openTriggerMiddle, 1, { x: "-=80px", y: "+=80px", ease: "Power4.easeOut" }, "close")
     .to(openTriggerBottom, 1, { x: "-=80px", y: "+=80px", delay: 0.1, ease: "Power4.easeOut"}, "close");
