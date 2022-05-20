@@ -7,15 +7,16 @@ const loadCustomer = async ({ id }, { password }) => {
     
     if(res.ok){
         const users = await res.json();
-        console.log(users)
+        const user = users.find((user) => user.id === id )
     }
     // if (!res.ok) throw new Error(res)
     // return res.json()
   }
 
 function Login() {
-    const { data, error, isLoading } = useAsync({ promiseFn: loadCustomer, customerId: 0 })
-    console.log(data)
+    const { data, error, isLoading } = useAsync({ promiseFn: loadCustomer, id: 1 })
+    console.log(JSON.stringify(data, null, 2))
+    // console.log(data)
     // if (isLoading){
     //     console.log(isLoading,'124124')
     //     return "Loading..."
