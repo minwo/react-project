@@ -22,13 +22,15 @@ function Main() {
         size:'big',
         color:'#fff'
     }
+
+    const ldType = false;
     
     return (
         <div id="container">
             <div className="content">
                 main
                 <button onClick={onClick}>버튼</button>
-                <Loader {...comment} number={number}/>
+                <Loader {...comment} type={ldType} number={number}/>
                 
                 <div className="button-wrap">
                     <Button type={type} {...comment} /> 

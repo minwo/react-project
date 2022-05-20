@@ -20,7 +20,7 @@ function Header() {
         
         const hdEl = document.querySelectorAll('.depth1 li');
         [].forEach.call(hdEl, (e) => {
-            console.log(e,'11111111')
+            
             e.querySelector('a').addEventListener('click', (event) => {
                 console.log(event)
                 document.querySelector('.close-menu').click()
@@ -79,7 +79,7 @@ function Header() {
                                     <Link to="/">Support</Link>
                                 </li>
                                 <li>
-                                    <Link to="/">About</Link>
+                                    <Link to="/Login">About</Link>
                                 </li>
                             </ul>
                         </nav>
