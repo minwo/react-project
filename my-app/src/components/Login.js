@@ -1,22 +1,23 @@
 
-import React, {useState} from 'react';
-import { useAsync } from "react-async"
-
-const loadCustomer = async ({ id }, { password }) => {
-    const res = await fetch("http://localhost:8888/users");
-    
-    if(res.ok){
-        const users = await res.json();
-        const user = users.find((user) => user.id === id )
-    }
-    // if (!res.ok) throw new Error(res)
-    // return res.json()
-  }
+import React, {useState, useEffect} from 'react';
+// import { useAsync } from "react-async"
 
 function Login() {
-    const { data, error, isLoading } = useAsync({ promiseFn: loadCustomer, id: 1 })
-    console.log(JSON.stringify(data, null, 2))
-    // console.log(data)
+    const [blogs, setBlogs] = useState(null);
+
+    useEffect(() => {
+        //여기서는 async await 을 쓸 수 없다.
+        fetch("http://localhost:8888/users")
+        .then(res => {
+            return res.json();
+        })
+        .then(data => {
+            data.map((user) => {
+                console.log(user.id, user.password)
+            })
+            setBlogs(data);
+        });
+    }, []);
     // if (isLoading){
     //     console.log(isLoading,'124124')
     //     return "Loading..."
