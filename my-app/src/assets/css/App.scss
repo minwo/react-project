@@ -112,7 +112,7 @@ input[type="number"]::-webkit-inner-spin-button {
         &::after{content:'On'}
         &::before{display:none}
     }
-    .handle{position:absolute;top:5.25px;left:5.25px;width:30px;height:30px;border-radius:50%;background-color:#fff;;transition:left 0.25s;
+    .handle{position:absolute;top:4.25px;left:6.25px;width:30px;height:30px;border-radius:50%;background-color:#fff;;transition:left 0.25s;
     }
     // &::after{display:none}
     &::before{content:'Off'}

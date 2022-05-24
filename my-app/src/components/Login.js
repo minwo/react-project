@@ -3,7 +3,20 @@ import React, {useState, useEffect} from 'react';
 // import { useAsync } from "react-async"
 
 function Login() {
-    const [blogs, setBlogs] = useState(null);
+    const [id, setId] = useState("");
+    const [pwd, setPwd] = useState("");
+
+    const handleId = (e) => {
+        setId(e.target.value)
+    }
+    
+    const handlePw = (e) => {
+        setPwd(e.target.value)
+    }
+
+    const onClickLogin = (e) => {
+        console.log('click login')
+    }
 
     useEffect(() => {
         //여기서는 async await 을 쓸 수 없다.
@@ -13,38 +26,26 @@ function Login() {
         })
         .then(data => {
             data.map((user) => {
-                console.log(user.id, user.password)
+                setId(user.id);
+                setPwd(user.password);
             })
-            setBlogs(data);
+        })
+        .catch((error) => {
+            console.error('실패:', error);
         });
     }, []);
-    // if (isLoading){
-    //     console.log(isLoading,'124124')
-    //     return "Loading..."
-    // }
-    // if (error) return `Something went wrong: ${error.message}`
-    // if (data);
-
-    // const [userId, setUserId] = useState();
-    // const [pass, setPass] = useState();
-    
-    // function submit(){
-    //     console.log(setUserId,setPass);
-    // }
 
     return (
         <div className='login'>
             <div className="module">
                 <div className="block">
-                    <input type="text" title="아이디 입력" id="login" name="login" placeholder="아이디를 입력해주세요"  />
-                    {/* value={{userId}} onChange={(e) => setUserId(e.target.value)} */}
+                    <input type="text" title="아이디 입력" id="login" name="login" placeholder="아이디를 입력해주세요" value={id} onChange={handleId} />
                 </div>
                 <div className="block">
-                    <input type="password" title="패스워드 입력" id="ps" name="ps" placeholder="비밀번호를 입력해주세요" />
-                    {/* value={{pass}} onChange={(e) => setPass(e.target.value)} */}
+                    <input type="password" title="패스워드 입력" id="ps" name="ps" placeholder="비밀번호를 입력해주세요" value={pwd} onChange={handlePw} />
                 </div>
                 <div className="block">
-                    <button className='btn-login'>로그인</button>
+                    <button className='btn-login' onClick={onClickLogin}>로그인</button>
                 </div>
             </div>
         </div>
