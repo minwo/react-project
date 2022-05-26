@@ -1,7 +1,10 @@
 
 import React, { useState } from 'react';
+import { Swiper, SwiperSlide } from "swiper/react";
 import Loader from '../components/loader';
 import Button , { test }from '../components/Button';
+
+import "swiper/scss";
 
 function Main() {
     console.log(test())
@@ -35,6 +38,23 @@ function Main() {
                 <div className="button-wrap">
                     <Button type={type} {...comment} /> 
                 </div>
+                <Swiper 
+                    className='test'
+                    loop={true}
+                    spaceBetween={50} 
+                    slidesPerView={3} 
+                    onSwiper={(swiper) => {
+                        
+                    }}
+                    onSlideChange={(swiper) => {
+                        
+                    }} 
+                >
+                    <SwiperSlide>Slide 1</SwiperSlide>
+                    <SwiperSlide>Slide 2</SwiperSlide>
+                    <SwiperSlide>Slide 3</SwiperSlide>
+                    <SwiperSlide>Slide 4</SwiperSlide>
+                </Swiper>
             </div>
         </div>
     );
