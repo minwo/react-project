@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import Loader from '../components/loader';
 import Button , { test }from '../components/Button';
+import Chart from '../components/Chart';
 
 import "swiper/scss";
 
@@ -32,6 +33,9 @@ function Main() {
         <div id="container">
             <div className="content">
                 main
+                <div>
+                    <Chart />
+                </div>
                 <button onClick={onClick}>버튼</button>
                 <Loader {...comment} type={ldType} number={number}/>
                 
