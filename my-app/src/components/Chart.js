@@ -26,28 +26,44 @@ function canvas(){
     // ctx.arc(x,y,radius,angleStart,angleEnd, false);
     // ctx.fillStyle = 'black';
     // ctx.fill();
-    let gra = ctx.createLinearGradient(0,0,150, 150);
-    gra.addColorStop(0,'#2a62a9');
-    gra.addColorStop(.5,'#3392be');
-    gra.addColorStop(1,'#3dc8d5');
-    ctx.beginPath();
-    ctx.clearRect(0,0,x,y);
-    ctx.arc(x, x, radius, 0, 2*Math.PI, false);
-    ctx.strokeStyle = gra;
-    ctx.stroke();
+    let test = 0;
+    function animate () {
+        // body
+        // let gra = ctx.createLinearGradient(0,0,150, 150);
+        // gra.addColorStop(0,'#2a62a9');
+        // gra.addColorStop(.5,'#3392be');
+        // gra.addColorStop(1,'#3dc8d5');
 
-    ctx.beginPath();
-    ctx.arc(x, x, radius, 0, 2*Math.PI, false);
-    ctx.lineWidth = 30;
-    // ctx.strokeStyle = 'rgba(0,0,0, 0.2)'
-    ctx.stroke();
+        ctx.clearRect(0, 0, x, y);
+
+        ctx.beginPath();
+        if(test < 1){
+            test = test + 0.1;
+            console.log(test)
+            console.log(111111)
+        }
+        ctx.arc(x, x, radius, angleStart, test*Math.PI, false);
+        ctx.strokeStyle = 'black';
+        ctx.lineWidth = 3;
+        ctx.stroke();
+        // requestAnimationFrame(animate);
+        // setInterval(animate, 100);
+    }
+
+    animate();
+
+    // ctx.beginPath();
+    // ctx.arc(x, x, radius, 0, 2*Math.PI, false);
+    // ctx.lineWidth = 30;
+    // // ctx.strokeStyle = 'rgba(0,0,0, 0.2)'
+    // ctx.stroke();
     
-    ctx.beginPath();
-    ctx.arc(x, y, radius, angleStart, 1.5);
-    ctx.strokeStyle = gradient;
-    ctx.lineWidth = 30;
-    ctx.stroke();
-    ctx.save();
+    // ctx.beginPath();
+    // ctx.arc(x, y, radius, angleStart, 1.5);
+    // ctx.strokeStyle = gradient;
+    // ctx.lineWidth = 30;
+    // ctx.stroke();
+    // ctx.save();
 
     // ctx.beginPath();
     // ctx.arc(x, y, radius, 1.5, 2);
