@@ -2,88 +2,91 @@
 import React , { useEffect } from 'react';
 
 function canvas(){
+    
     const el = document.querySelector('.chart');
+    const valEl = document.querySelector('.chart-value');
+    let windowWidth = window.innerWidth * .7; 
+    el.setAttribute('width',windowWidth);
+    el.setAttribute('height',windowWidth);
+
+
     const ctx = el.getContext('2d');
     
-    let windowWidth = window.innerWidth;
     
-    const x = 150;
-    const y = 150;
+    const x = windowWidth / 2;
+    const y = windowWidth / 2;
     const radius = 100;
+    let degree = 360;
     
     let angleStart = 0;
-    let angleEnd = Math.PI * 1.7;
+    // let angleEnd = Math.PI * 1.7;
 
-    el.setAttribute('width',300);
-    el.setAttribute('height',300);
-
+    let chartValue = [30, 20, 40, 50];
+    let chartColor = ['red','blue','black','green'];
+    const reducer = (accumulator, curr) => accumulator + curr;
+    const total = chartValue.reduce(reducer);
+    
     var gradient = ctx.createLinearGradient(0,500,0, 0);
     gradient.addColorStop(0, '#2a62a9');
     gradient.addColorStop(1, '#3dc8d5');
-
-    // ctx.beginPath();
-    // ctx.moveTo(x,y);
-    // ctx.arc(x,y,radius,angleStart,angleEnd, false);
-    // ctx.fillStyle = 'black';
-    // ctx.fill();
-    let test = 0;
-    function animate () {
-        // body
-        // let gra = ctx.createLinearGradient(0,0,150, 150);
-        // gra.addColorStop(0,'#2a62a9');
-        // gra.addColorStop(.5,'#3392be');
-        // gra.addColorStop(1,'#3dc8d5');
-
-        ctx.clearRect(0, 0, x, y);
-
-        ctx.beginPath();
-        if(test < 1){
-            test = test + 0.1;
-            console.log(test)
-            console.log(111111)
-        }
-        ctx.arc(x, x, radius, angleStart, test*Math.PI, false);
-        ctx.strokeStyle = 'black';
-        ctx.lineWidth = 3;
-        ctx.stroke();
-        // requestAnimationFrame(animate);
-        // setInterval(animate, 100);
-    }
-
-    animate();
-
-    // ctx.beginPath();
-    // ctx.arc(x, x, radius, 0, 2*Math.PI, false);
-    // ctx.lineWidth = 30;
-    // // ctx.strokeStyle = 'rgba(0,0,0, 0.2)'
-    // ctx.stroke();
     
-    // ctx.beginPath();
-    // ctx.arc(x, y, radius, angleStart, 1.5);
-    // ctx.strokeStyle = gradient;
-    // ctx.lineWidth = 30;
-    // ctx.stroke();
-    // ctx.save();
+    const conv_array = chartValue.slice().map((data) => {
+        let rate = data / total;
+        let myDegree = degree * rate;
+        return myDegree;
+    });
 
-    // ctx.beginPath();
-    // ctx.arc(x, y, radius, 1.5, 2);
-    // ctx.strokeStyle = 'red';
-    // ctx.lineWidth = 30;
-    // ctx.stroke();
- 
-    // ctx.beginPath();
-    // ctx.arc(x, y, radius, 2, 4);
-    // ctx.strokeStyle = 'blue';
-    // ctx.lineWidth = 30;
-    // ctx.stroke();
+    let ll = 0;
+    degree = 0;
+    let startDegree = 0;
+    let endDegree = 0;
+    let tt = 0;
+    let inff = 0.02;
+    draw();
 
-    // ctx.beginPath();
-    // ctx.arc(x, y, radius, 4, 6.3);
-    // ctx.strokeStyle = 'blue';
-    // ctx.lineWidth = 30;
-    // ctx.stroke();
+    function draw(){
+        startDegree = (Math.PI/180)*0;
+        endDegree = (Math.PI/180)* chartValue[3];
+        console.log(endDegree)
+        tt = tt + inff;
+        if(tt <= endDegree){
+            ctx.clearRect(0, 0, windowWidth, windowWidth)
+            ctx.beginPath()
+            console.log(tt);
+            ctx.arc(x, y, radius, startDegree, tt, false);
+            ctx.lineWidth = 10;
+            ctx.stroke();
+            ll = window.requestAnimationFrame(draw);
+        } else {
+            console.log('222222222');
+            cancelAnimationFrame(ll);
+        }
+    }
+    
+    // for( let i = 0; i < conv_array.length; i++ ){
+    //     let item = conv_array[i];
+    //     let valTxt = chartValue[i] / total * 100;
 
+    //     ctx.save();
+    //     ctx.beginPath();
 
+    //     if( i == 0 ){
+    //         startDegree = (Math.PI/180)*0;
+    //         endDegree = (Math.PI/180)* item;
+    //         ctx.arc(x, y, radius, startDegree, endDegree, false);
+    //         console.log(startDegree, endDegree)
+    //         degree = item;
+    //     } else {
+    //         // startDegree = (Math.PI/180)*degree;
+    //         // endDegree = (Math.PI/180)* (degree + item);
+    //         // ctx.arc(x, y, radius, startDegree, endDegree, false);
+    //         // degree = degree + item;
+    //     }
+    //     ctx.strokeStyle = chartColor[i];
+    //     ctx.lineWidth = 10;
+    //     ctx.stroke();
+    //     valEl.innerHTML += "<div>" + valTxt.toFixed(2) + "%</div>";
+    // }
 }
 
 function Chart() {
@@ -94,6 +97,7 @@ function Chart() {
     return (
         <>
             <canvas className='chart'></canvas>
+            <div className="chart-value"></div>
         </>
     );
 }
