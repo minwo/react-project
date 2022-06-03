@@ -42,51 +42,50 @@ function canvas(){
     let endDegree = 0;
     let tt = 0;
     let inff = 0.02;
-    draw();
+    // draw();
 
-    function draw(){
-        startDegree = (Math.PI/180)*0;
-        endDegree = (Math.PI/180)* chartValue[3];
-        console.log(endDegree)
-        tt = tt + inff;
-        if(tt <= endDegree){
-            ctx.clearRect(0, 0, windowWidth, windowWidth)
-            ctx.beginPath()
-            console.log(tt);
-            ctx.arc(x, y, radius, startDegree, tt, false);
-            ctx.lineWidth = 10;
-            ctx.stroke();
-            ll = window.requestAnimationFrame(draw);
-        } else {
-            console.log('222222222');
-            cancelAnimationFrame(ll);
-        }
+    // function draw(){
+    //     startDegree = (Math.PI/180)*0;
+    //     endDegree = (Math.PI/180)* chartValue[3];
+    //     console.log(endDegree)
+    //     tt = tt + inff;
+    //     if(tt <= endDegree){
+    //         ctx.clearRect(0, 0, windowWidth, windowWidth)
+    //         ctx.beginPath()
+    //         console.log(tt);
+    //         ctx.arc(x, y, radius, startDegree, tt, false);
+    //         ctx.lineWidth = 10;
+    //         ctx.stroke();
+    //         ll = window.requestAnimationFrame(draw);
+    //     } else {
+    //         console.log('222222222');
+    //         cancelAnimationFrame(ll);
+    //     }
+    // }
+    const draw = (startDegree, endDegree, i) => {
+        ctx.arc(x, y, radius, startDegree, endDegree, false);
     }
     
-    // for( let i = 0; i < conv_array.length; i++ ){
-    //     let item = conv_array[i];
-    //     let valTxt = chartValue[i] / total * 100;
+    for( let i = 0; i < conv_array.length; i++ ){
+        let item = conv_array[i];
+        let valTxt = chartValue[i] / total * 100;
 
-    //     ctx.save();
-    //     ctx.beginPath();
+        ctx.save();
+        ctx.beginPath();
 
-    //     if( i == 0 ){
-    //         startDegree = (Math.PI/180)*0;
-    //         endDegree = (Math.PI/180)* item;
-    //         ctx.arc(x, y, radius, startDegree, endDegree, false);
-    //         console.log(startDegree, endDegree)
-    //         degree = item;
-    //     } else {
-    //         // startDegree = (Math.PI/180)*degree;
-    //         // endDegree = (Math.PI/180)* (degree + item);
-    //         // ctx.arc(x, y, radius, startDegree, endDegree, false);
-    //         // degree = degree + item;
-    //     }
-    //     ctx.strokeStyle = chartColor[i];
-    //     ctx.lineWidth = 10;
-    //     ctx.stroke();
-    //     valEl.innerHTML += "<div>" + valTxt.toFixed(2) + "%</div>";
-    // }
+        startDegree = i == 0 ? (Math.PI/180) * 0 : (Math.PI/180) * degree;
+        endDegree = i == 0 ? (Math.PI/180) * item : (Math.PI/180) * (degree + item);
+        degree = i == 0 ? conv_array[0] : degree + item;;
+        
+        draw(startDegree, endDegree, i);
+
+        ctx.strokeStyle = chartColor[i];
+        ctx.lineWidth = 10;
+        ctx.stroke();
+
+        valEl.innerHTML += "<div>" + valTxt.toFixed(2) + "%</div>";
+    }
+
 }
 
 function Chart() {
